@@ -40,6 +40,7 @@ main {
   margin: 2em 1em;
   background: hsl(0, 0%, 100%);
   position: relative;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 
 .picture-container img {
@@ -122,7 +123,7 @@ main {
   left: 0;
   right: 0;
   opacity: 0;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 .share-container.active {
   opacity: 1;
@@ -131,10 +132,6 @@ main {
   text-transform: uppercase;
   color: hsl(210, 46%, 95%);
   letter-spacing: 8px;
-}
-
-.show {
-  display: none;
 }
 
 .attribution {
@@ -147,4 +144,52 @@ main {
 }
 .attribution a:hover {
   text-decoration: underline;
+}
+
+@media screen and (min-width: 680px) {
+  .main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    max-width: 80rem;
+    max-height: 45dvh;
+  }
+  .picture-container {
+    min-height: 30dvh;
+  }
+  .picture-container img {
+    display: block;
+    max-width: 100%;
+    min-height: 30dvh;
+    border-radius: 1em 0 0 1em;
+  }
+  .share-container.active {
+    gap: 1.5rem;
+    width: 23rem;
+    padding: 0.9em;
+    border-radius: 1em;
+    bottom: 7rem;
+    right: -7.7rem;
+    left: unset;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  .share-container.active::before {
+    content: "";
+    position: absolute;
+    right: 9.7rem;
+    bottom: -1.5rem;
+    background: hsl(217, 19%, 35%);
+    width: 1.8rem;
+    height: 2.3rem;
+    transform: rotate(45deg) translateX(-50%);
+  }
+}
+@media screen and (min-width: 980px) {
+  .picture-container img {
+    display: block;
+    max-width: 100%;
+    min-height: 45dvh;
+  }
 }/*# sourceMappingURL=style.css.map */

@@ -49,6 +49,7 @@ main
   margin: 2em 1em
   background: $white
   position: relative
+  box-shadow: 0 10px 10px rgba(0,0,0,0.1)
 
 .picture-container
   img
@@ -120,8 +121,7 @@ main
   left: 0
   right:0
   opacity:0
-  
-  transition: all 0.5s ease-in-out
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55)
 
   &.active
     opacity: 1
@@ -129,12 +129,7 @@ main
     p
       text-transform: uppercase
       color: $light-grayish-blue
-      letter-spacing: 8px
-
-.show
-  display: none 
-
-  
+      letter-spacing: 8px  
 
 .attribution
   font-size: 11px
@@ -145,3 +140,46 @@ main
     text-decoration: none
     &:hover
       text-decoration: underline
+
+@media screen and (min-width: $mid-screen)
+  .main-container
+    @include flex-center($direction:row)
+    max-width: 80rem
+    max-height: 45dvh
+
+  .picture-container
+    min-height: 30dvh
+    
+    img
+      display: block
+      max-width: 100%
+      min-height: 30dvh
+      border-radius: 1em 0 0 1em
+  
+  .share-container.active
+    gap: 1.5rem
+    width: 23rem
+    padding: .9em
+    border-radius: 1em
+    bottom: 7rem
+    right: -7.7rem
+    left: unset
+    box-shadow: 0 10px 10px rgba(0,0,0,0.1)
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55)
+
+    &::before
+      content: ""
+      position: absolute
+      right: 9.7rem
+      bottom: -1.5rem
+      background: $dark-grayish-blue
+      width: 1.8rem
+      height: 2.3rem
+      transform: rotate(45deg) translateX(-50%)
+
+@media screen and (min-width: $big-screen)
+  .picture-container
+    img
+      display: block
+      max-width: 100%
+      min-height: 45dvh
